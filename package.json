@@ -1,0 +1,41 @@
+{
+  "name": "gulp-require-html-inline",
+  "version": "1.0.0",
+  "description": "Gulp plugin which inlines html files referenced using require(\"path-to-file.html\") notation",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "demo": "gulp -f demo/gulpfile.js"
+  },
+  "keywords": [
+    "gulpplugin",
+    "gulp",
+    "plugin",
+    "require",
+    "html",
+    "inline"
+  ],
+  "author": {
+    "name": "Dmitry Gurovich",
+    "email": "yrtimid@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/yrtimiD/gulp-require-html-inline/issues"
+  },
+  "homepage": "https://github.com/yrtimiD/gulp-require-html-inline",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yrtimiD/gulp-require-html-inline.git"
+  },
+  "dependencies": {
+    "gulplog": "^1.0.0",
+    "html-minifier": "^4.0.0",
+    "plugin-error": "^1.0.1",
+    "through2": "^3.0.1"
+  },
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.2.0"
+  }
+}
