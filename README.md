@@ -1,6 +1,7 @@
 # gulp-require-html-inline
 Gulp plugin which inline html templates referenced using `require("path-to-file.html")` notation.
-Internally uses [html-minifier](https://www.npmjs.com/package/html-minifier) to convert html file to string.
+
+Internally uses [html-minifier](https://www.npmjs.com/package/html-minifier) to convert html files to strings.
 
 ## Usage example
 ```sh
@@ -36,12 +37,12 @@ var a = require("./test.html");
 	Some " text ' with ` special characters
 </div>
 ```
-Output will be single file:
+Output will be a single file:
 ```js
 //result/file.js
 var a = `<div>Some " text ' with \` special characters</div>`;
 ```
-For more examples see `demo` folder and execute `npm run demo`
+For more examples see [demo](https://github.com/yrtimiD/gulp-require-html-inline/tree/master/demo) folder and execute `npm run demo` locally.
 
 ## Configuration
 `htmlInline` function accepts optional [minifier options](https://github.com/kangax/html-minifier#options-quick-reference) object.
