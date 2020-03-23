@@ -1,20 +1,12 @@
-var a = `<div>
-	Some " text ' with \` special characters
-</div>`;
-var b = `<div>
-	Some " text ' with \` special characters
-</div>`;
-var c = `<div>
-	Some " text ' with \` special characters
-</div>`;
-var d = `<div>
-	Some " text ' with \` special characters
-</div>`; var e = `<div>
-	Some " text ' with \` special characters
-</div>`;
-var f = ``;
+var a = `<div>Some " text ' with \` special characters</div>`;
+var b = `<div>Some " text ' with \` special characters</div>`;
+var c = `<div>Some " text ' with \` special characters</div>`;
+var a2 = `<div>Some " text ' with \` special characters</div>`;
+var b2 = `<div>Some " text ' with \` special characters</div>`;
+var c2 = `<div>Some " text ' with \` special characters</div>`;
+var d = `<div>Some " text ' with \` special characters</div>`; var e = `<div>Some " text ' with \` special characters</div>`;
+var f = require("c:\\test\\test.html");
 var g = require("./test/test.html");
-var h = require("test");
-//var i = `<div>
-	Some " text ' with \` special characters
-</div>`;
+var h = require("./test.htm");
+var i = require("test");
+//var j = `<div>Some " text ' with \` special characters</div>`;
