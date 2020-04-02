@@ -1,17 +1,17 @@
 # gulp-require-html-inline
 Gulp plugin which inline html templates referenced using `require("path-to-file.html")` notation.
 
-Internally uses [html-minifier](https://www.npmjs.com/package/html-minifier) to convert html files to strings.
+Internally uses [html-minifier-terser](https://www.npmjs.com/package/html-minifier-terser) to convert html files to strings.
 
 ## Usage example
 ```sh
 npm install --save-dev gulp-require-html-inline
 ```
 
-[html-minifier](https://www.npmjs.com/package/html-minifier) is a peer dependency, so make sure to install it if it's not already in your `package.json`:
+[html-minifier-terser](https://www.npmjs.com/package/html-minifier-terser) is a peer dependency, so make sure to install it if it's not already in your `package.json`:
 
 ```sh
-npm install --save-dev html-minifier
+npm install --save-dev html-minifier-terser@5
 ```
 
 ```js
@@ -45,7 +45,7 @@ var a = `<div>Some " text ' with \` special characters</div>`;
 For more examples see [demo](https://github.com/yrtimiD/gulp-require-html-inline/tree/master/demo) folder and execute `npm run demo` locally.
 
 ## Configuration
-`htmlInline` function accepts optional [minifier options](https://github.com/kangax/html-minifier#options-quick-reference) object.
+`htmlInline` function accepts optional [minifier options](https://github.com/DanielRuf/html-minifier-terser#options-quick-reference) object.
 
 If not provided, default `{ collapseWhitespace: true }` is used to ensure resulting html is a single line (otherwise it can break commented out `require`s).
 
