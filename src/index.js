@@ -16,6 +16,14 @@ const defaultHtmlMinifierOptions = {
 	quoteCharacter: "'"
 };
 
+function stripBOM(str){
+	if (str.charCodeAt(0) === 0xFEFF) {
+		return str.slice(1);
+	}
+
+	return str;
+}
+
 module.exports = function (customHtmlMinifierOptions) {
 	return through.obj(function (file, enc, cb) {
 		const htmlMinifierOptions = Object.assign({}, defaultHtmlMinifierOptions, customHtmlMinifierOptions);
@@ -39,6 +47,7 @@ module.exports = function (customHtmlMinifierOptions) {
 			const htmlFilePath = path.isAbsolute(requirePath) ? requirePath : path.join(path.dirname(file.path), requirePath);
 			if (fs.existsSync(htmlFilePath)) {
 				let htmlFileContent = fs.readFileSync(htmlFilePath, { encoding: enc });
+				htmlFileContent = stripBOM(htmlFileContent);
 				htmlFileContent = minify(htmlFileContent, htmlMinifierOptions);
 				log.debug(`Inlining ${requirePath}`);
 				return wrappingQuote + escapeQuotes(htmlFileContent) + wrappingQuote;
