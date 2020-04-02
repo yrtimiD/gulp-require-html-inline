@@ -12,13 +12,17 @@ const requireHtmlRegexp = /require\(["'`](.*?\.html?)["'`]\)/ig;
 const defaultHtmlMinifierOptions = {
 	collapseWhitespace: true,
 	conservativeCollapse: true,
-	keepClosingSlash: true
+	keepClosingSlash: true,
+	quoteCharacter: "'"
 };
 
-module.exports = function (htmlMinifierOptions) {
+module.exports = function (customHtmlMinifierOptions) {
 	return through.obj(function (file, enc, cb) {
+		const htmlMinifierOptions = Object.assign({}, defaultHtmlMinifierOptions, customHtmlMinifierOptions);
 
-		htmlMinifierOptions = htmlMinifierOptions || defaultHtmlMinifierOptions;
+		const wrappingQuote = htmlMinifierOptions.quoteCharacter === "\"" ? "'" : "\"";
+		const wrappingQuoteEscapeRegExp = new RegExp("\\" + wrappingQuote, "g")
+		const escapeQuotes = (text) => text.replace(wrappingQuoteEscapeRegExp, "\\" + wrappingQuote);
 
 		if (file.isNull()) {
 			cb(null, file)
@@ -37,7 +41,7 @@ module.exports = function (htmlMinifierOptions) {
 				let htmlFileContent = fs.readFileSync(htmlFilePath, { encoding: enc });
 				htmlFileContent = minify(htmlFileContent, htmlMinifierOptions);
 				log.debug(`Inlining ${requirePath}`);
-				return "`" + htmlFileContent.replace(/`/g, '\\\`') + "`";
+				return wrappingQuote + escapeQuotes(htmlFileContent) + wrappingQuote;
 			} else {
 				log.warn(`${PLUGIN_NAME}: Required file ${requirePath} (${htmlFilePath}) doesn't exists. Leaving unchanged.`);
 				return match;
