@@ -47,9 +47,8 @@ For more examples see [demo](https://github.com/yrtimiD/gulp-require-html-inline
 ## Configuration
 `htmlInline` function accepts optional [minifier options](https://github.com/DanielRuf/html-minifier-terser#options-quick-reference) object.
 
-If not provided, default `{ collapseWhitespace: true }` is used to ensure resulting html is a single line (otherwise it can break commented out `require`s).
-
-❗`collapseWritespace` option might have side effects, be sure to read [documentation](http://perfectionkills.com/experimenting-with-html-minifier/#collapse_whitespace)❗
+If not provided, default configuration includes `collapseWhitespace: true`
+which ensures that produced html is a single line (otherwise it can break commented out `require`s).
 
 ## Implementation notes
 - Require statements are detected using simple regex and no semantic code parsing is done. All kind of quotation marks are supports and both `.html` and `.htm` extensions are accepted. Some examples:
@@ -58,4 +57,4 @@ If not provided, default `{ collapseWhitespace: true }` is used to ensure result
   - ``require(`a.html`)``
   - `require("a.htm")`
 - Unresolved files will be skipped, logged and `require` will be untouched.
-- Multiline html files might break commented out require statements. See [Configuration section](#configuration)
+- Multiline html files might break commented out require statements if custom minifier options are used. See [Configuration section](#configuration)

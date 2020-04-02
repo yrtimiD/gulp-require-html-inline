@@ -9,10 +9,16 @@ const PLUGIN_NAME = 'gulp-require-html-inline';
 
 const requireHtmlRegexp = /require\(["'`](.*?\.html?)["'`]\)/ig;
 
+const defaultHtmlMinifierOptions = {
+	collapseWhitespace: true,
+	conservativeCollapse: true,
+	keepClosingSlash: true
+};
+
 module.exports = function (htmlMinifierOptions) {
 	return through.obj(function (file, enc, cb) {
 
-		htmlMinifierOptions = htmlMinifierOptions || { collapseWhitespace: true };
+		htmlMinifierOptions = htmlMinifierOptions || defaultHtmlMinifierOptions;
 
 		if (file.isNull()) {
 			cb(null, file)

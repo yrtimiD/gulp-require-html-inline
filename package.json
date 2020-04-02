@@ -1,6 +1,6 @@
 {
   "name": "gulp-require-html-inline",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Gulp plugin which inlines html files referenced using require(\"path-to-file.html\") notation",
   "main": "src/index.js",
   "scripts": {
